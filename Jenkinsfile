@@ -19,11 +19,7 @@ pipeline {
         }
         stage('Deploy') { 
             steps {
-                sh 'ls /usr'
-                sh 'ls /usr/src/'
-                sh 'ls /usr/src/app'
-                sh 'ls /usr/src/app/target/'
-                sh 'cp /usr/src/app/target/us.fetchr.sample-0.0.1-SNAPSHOT.war /var/deployments'
+                sh 'cp /var/jenkins_home/workspace/fetcher-hello-world/target/us.fetchr.sample-0.0.1-SNAPSHOT.war /var/deployments'
             }
         }
     }

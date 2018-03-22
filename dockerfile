@@ -8,4 +8,3 @@ EXPOSE 8080
 
 # TODO: find a way to cache packages for spring-boot:run"
 CMD ["mvn", "spring-boot:run"]
-
