@@ -13,10 +13,17 @@
         name: python-jenkins
         state: forcereinstall
 
-    - name: Triggering jenkins build
-      jenkins_job:
-        name: fetcher-hello-world
-        token: e557dfd98441a8bbd2f4b198cd21e531
+    # tried using the jenkins_job module could not trigger the build even when getting an OK message.
+    - name: Queue build of a project in Jenkins
+      uri:
+        url: http://localhost:8080/job/fetcher-hello-world/build?token=e557dfd98441a8bbd2f4b198cd21e531"
+        method: POST
         user: fetchr-admin
-        enabled: true
-        url: http://localhost:8080
+        password: someadminpassword
+        force_basic_auth: yes
+        status_code: 201
+    
+    - name: Poll to wait until jenkins releases compiled .war file
+      command: docker cp jenkins-builder:/var/jenkins_home/ /host/path/target 
+      async: 360
+      poll: 15

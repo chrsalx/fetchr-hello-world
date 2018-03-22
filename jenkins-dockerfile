@@ -1,0 +1,8 @@
+FROM jenkins/jenkins:lts
+
+USER root
+RUN apt-get update && apt-get install -y maven
+RUN mkdir /var/deployments
+RUN chown -R jenkins /var/deployments
+
+USER jenkins

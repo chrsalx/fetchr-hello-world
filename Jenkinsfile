@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Deploy') { 
             steps {
-                sh 'echo "TBC"'
+                sh 'cp /usr/src/app/target/us.fetchr.sample-0.0.1-SNAPSHOT.war /var/deployments'
             }
         }
     }
