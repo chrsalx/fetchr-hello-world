@@ -24,3 +24,12 @@ create an efficient docker image based on best practices for the hello world ser
 
 
 Make the dev environment automation available via a public github repo with any instructions on how to run your dev environment in an accompanying README.md file. Please send it as this will be discussed during the interview.
+
+    -v /var/run/docker.sock:/var/run/docker.sock\
+    -v $(which docker):/usr/bin/docker\
+
+docker run -d\
+    -v /var/app/jenkins_home:/var/app/jenkins_home\
+    -p 8080:8080\
+    -p 50000:50000\
+    jenkins/jenkins:lts 

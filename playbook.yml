@@ -1,0 +1,22 @@
+- hosts: local
+  connection: local
+  become: yes
+  become_user: root
+
+  tasks:
+    # tried to use docker_container_module could not debug error.
+    # - name: Run jenkins container.
+    #  command: 'docker run -d --name jenkins-builder -v var/app/jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts'
+    
+    - name: Setup python-jenkins
+      pip:
+        name: python-jenkins
+        state: forcereinstall
+
+    - name: Triggering jenkins build
+      jenkins_job:
+        name: fetcher-hello-world
+        token: e557dfd98441a8bbd2f4b198cd21e531
+        user: fetchr-admin
+        enabled: true
+        url: http://localhost:8080

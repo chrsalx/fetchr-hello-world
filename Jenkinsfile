@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    environment {
-        COMPOSE_PROJECT_NAME = "${env.JOB_NAME}-${env.BUILD_ID}"
-    }
+
     stages {
         stage('Checkout') { 
             steps {
@@ -11,7 +9,7 @@ pipeline {
         }
         stage('Build') { 
             steps {
-                sh 'docker build -t test .'
+                sh 'mvn package'
             }
         }
         stage('Test') { 
@@ -23,11 +21,6 @@ pipeline {
             steps {
                 sh 'echo "TBC"'
             }
-        }
-    }
-    post {
-        always {
-            sh "docker-compose down -v"
         }
     }
 }
