@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Deploy') { 
             steps {
-                sh 'cp /var/jenkins_home/workspace/fetcher-hello-world/target/us.fetchr.sample-0.0.1-SNAPSHOT.war /var/deployments'
+                sh 'cp /var/jenkins_home/workspace/fetcher-hello-world/target/us.fetchr.sample-0.0.1-SNAPSHOT.war /var/jenkins_home/workspace/fetcher-hello-world/target/output.war'
             }
         }
     }
