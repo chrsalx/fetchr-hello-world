@@ -8,6 +8,7 @@ pipeline {
             steps {
                 git url: 'https://github.com/chrsalx/fetchr-hello-world'
             }
+        }
         stage('Build') { 
             steps {
                 sh 'docker build -t test .'
