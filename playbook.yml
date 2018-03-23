@@ -4,14 +4,22 @@
   become_user: root
 
   tasks:
+    - name: Build testing image from source.
+      command: docker build -t my-java-app -f jenkins-dockerfile {{ playbook_dir }}/.
+
     # tried to use docker_container_module could not debug error.
-    # - name: Run jenkins container.
-    #  command: 'docker run -d --name jenkins-builder -v var/app/jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts'
+    - name: Run jenkins container.
+      command: 'docker run -d --rm --name jenkins-builder -v {{ playbook_dir }}/jenkinscfg/jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins-builder'
     
     - name: Setup python-jenkins
       pip:
         name: python-jenkins
         state: forcereinstall
+
+    - name: Giving enough time so the jenkins server can spin up
+      command: echo "waiting..."
+      async: 300
+      poll: 30
 
     # tried using the jenkins_job module could not trigger the build even when getting an OK message.
     - name: Queue build of a project in Jenkins
@@ -25,7 +33,14 @@
     
     - name: Poll to wait until jenkins releases compiled .war file
       command: docker cp jenkins-builder:/var/jenkins_home/workspace/fetcher-hello-world/target/output.war {{ playbook_dir }}/output.war
-      async: 360
+      async: 120
       poll: 15
 
+    - name: Kill jenkins server as it is not needed anymore.
+      command: docker kill jenkins-builder
+
     - name: Build docker image with application.
+      command: docker build -t my-java-app {{playbook_dir}}/.
+    
+    - name: Running app. (The server may take a few minutes to respond)
+      command: docker run -d --rm -p 9000:8080 my-java-app

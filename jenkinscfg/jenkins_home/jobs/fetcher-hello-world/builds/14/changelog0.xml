@@ -1,0 +1,11 @@
+commit 50bb1f01672aa019f423c5bbbab12529efdb7f84
+tree 7be0760e4f08e5232047b2cb4d897fd6d3a59090
+parent aea870992ce497d754a690b0042ad3b3fc711ccf
+author chrsalx <polancochristian@gmail.com> 2018-03-22 19:30:17 -0500
+committer chrsalx <polancochristian@gmail.com> 2018-03-22 19:30:17 -0500
+
+    testing adding a web.xml file to run server on jetty
+
+
+
+:000000 100644 0000000000000000000000000000000000000000 932acb09d42137e218b99b44d98f031923f4b2e2 A	src/main/webapp/WEB-INF/web.xml

@@ -1,36 +1,22 @@
 # hello-world
 
-#Sample Tool Stack : Jenkins , Vagrant , Ansible
+# Prerequisites:
+- Ansible: 2.4.3.0
+- Docker: 18.03.0-ce
 
-This is sample Spring Boot application
+# How to run deployment process:
+- Clone repo: `$ git clone https://github.com/chrsalx/fetchr-hello-world.git`
+- Run in shell: `$ ansible-playbook -i ./hosts  playbook.yml --ask-sudo-pass`
+- Input sudo password for your machine
+- Wait for ansible to finish (server may take a while to run)
+- Go to http://localhost:9000
 
-To test the sample application execute the following commands:
+# How does it work?
 
-mvn package
-mvn spring-boot:run
+The ansible script first builds the docker image that will be used to run Jenkins, using a base image from docker and sharing a backup of the Jenkins configuration
+with the container once it's run.
 
-to hit the localhost after:
-http://localhost:8080
+Once the Jenkins server is running, ansible sends a request to trigger a new pipeline which proceeds to clone the repo and build the the .war file which is then retrieved
+by a polling task run by ansible.
 
-Your Task
-
-Your next task is to take the recently built hello-world service:
-
-Read the documentation for the Hello World service and test them to make sure they work as expected.
-Once you understand their usage, use preferred tools and technology to create automation that stands up local dev environment of the stack.
-
-
-create an efficient docker image based on best practices for the hello world service. Be prepared to explain your approach.
-
-
-Make the dev environment automation available via a public github repo with any instructions on how to run your dev environment in an accompanying README.md file. Please send it as this will be discussed during the interview.
-
-    -v /var/run/docker.sock:/var/run/docker.sock\
-    -v $(which docker):/usr/bin/docker\
-
-docker run -d\
-    --name jenkins-builder
-    -v /var/app/jenkins_home:/var/jenkins_home\
-    -p 8080:8080\
-    -p 50000:50000\
-    -t jenkins-builder
+Once ansible knows the project is compiled, it builds the docker image using the source and runs it. Killing the Jenkins container in the process as it wont be needed anymore.

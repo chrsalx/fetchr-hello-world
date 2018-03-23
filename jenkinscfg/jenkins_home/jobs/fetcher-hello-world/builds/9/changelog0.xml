@@ -1,0 +1,12 @@
+commit b61ec37c72bd9523a6e7fd29d0c3f0e3b15838b5
+tree b252bd1ac5ce2c5542b680d5ee872f9fcc2bde2c
+parent e62eb70fb78bd3d55fe121b85e71d699430eeb60
+author chrsalx <polancochristian@gmail.com> 2018-03-22 18:18:51 -0500
+committer chrsalx <polancochristian@gmail.com> 2018-03-22 18:18:51 -0500
+
+    slight changes to deployment concept
+
+
+
+:100644 100644 98e80d7d5032efa25c691b88a35d36b809e0c539 7bec7c103e4a99d72af62c34325e1592a3fe6658 M	Jenkinsfile
+:100644 100644 2a00c147f321906bb32ae77a7a5d60c7318465de 1bd3b6aaacd73116203be78cb5f9392f4be82d8e M	jenkins-dockerfile

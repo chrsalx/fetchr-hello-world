@@ -1,0 +1,12 @@
+commit e62eb70fb78bd3d55fe121b85e71d699430eeb60
+tree 351b187ceb79924c75cb320a7325a4ddcad9b97c
+parent 99e98082d68eb583de73d02213e776eb089c78c3
+author chrsalx <polancochristian@gmail.com> 2018-03-22 18:16:25 -0500
+committer chrsalx <polancochristian@gmail.com> 2018-03-22 18:16:25 -0500
+
+    found .war file
+
+
+
+:100644 100644 2e1d4dcb733a81ae756e924a7b5773d5d0cabdec 98e80d7d5032efa25c691b88a35d36b809e0c539 M	Jenkinsfile
+:100644 100644 017edbda4606df79561f5056f07ec4e38aef9854 3fde83aaa90daf66305a2b32937e99ed0b43d63f M	dockerfile

@@ -1,0 +1,11 @@
+commit 99e98082d68eb583de73d02213e776eb089c78c3
+tree 8426dfac0f3036283c2587519354e2a943d846e2
+parent e72a929ac905932754dca4a30afa2a09a77946da
+author chrsalx <polancochristian@gmail.com> 2018-03-22 18:15:03 -0500
+committer chrsalx <polancochristian@gmail.com> 2018-03-22 18:15:03 -0500
+
+    debugging commands on deploy stagwe
+
+
+
+:100644 100644 6bc094ea12d5ff43feaa882fc7f1018c6bf73c02 2e1d4dcb733a81ae756e924a7b5773d5d0cabdec M	Jenkinsfile

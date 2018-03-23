@@ -1,6 +1,10 @@
-FROM jetty:jre8
+FROM maven:3.5-jdk-8
 
-COPY output.war /var/lib/jetty/webapps/app.war
-RUN ls /var/lib/jetty/webapps
+WORKDIR /usr/src/app/
+
+ADD . .
 
 EXPOSE 8080
+
+# TODO: find a way to cache packages for spring-boot:run"
+CMD ["mvn", "spring-boot:run"]
