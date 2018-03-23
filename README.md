@@ -16,7 +16,12 @@
 The ansible script first builds the docker image that will be used to run Jenkins, using a base image from docker and sharing a backup of the Jenkins configuration
 with the container once it's run.
 
-Once the Jenkins server is running, ansible sends a request to trigger a new pipeline which proceeds to clone the repo and build the the .war file which is then retrieved
+Once the Jenkins server is running, ansible sends a request to trigger a new pipeline which proceeds to clone the repo and build the .war file which is then retrieved
 by a polling task run by ansible.
 
-Once ansible knows the project is compiled, it builds the docker image using the source and runs it. Killing the Jenkins container in the process as it wont be needed anymore.
+Once ansible knows the project is compiled, it builds the docker image using the source and runs it. Killing the Jenkins container in the process as it won't be needed anymore.
+
+# How to manage deployment versions with maven
+Maven versions can be managed with a plugin that updates the version every time it is called. It's called Versions Maven Plugin.
+
+We would only need to set up the CI to trigger this plugin every time a new release is accepted.
