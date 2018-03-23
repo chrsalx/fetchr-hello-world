@@ -24,6 +24,8 @@
         status_code: 201
     
     - name: Poll to wait until jenkins releases compiled .war file
-      command: docker cp jenkins-builder:/var/jenkins_home/ /host/path/target 
+      command: docker cp jenkins-builder:/var/jenkins_home/workspace/fetcher-hello-world/target/output.war {{ playbook_dir }}/output.war
       async: 360
       poll: 15
+
+    - name: Build docker image with application.

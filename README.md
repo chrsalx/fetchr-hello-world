@@ -29,6 +29,7 @@ Make the dev environment automation available via a public github repo with any 
     -v $(which docker):/usr/bin/docker\
 
 docker run -d\
+    --name jenkins-builder
     -v /var/app/jenkins_home:/var/jenkins_home\
     -p 8080:8080\
     -p 50000:50000\
